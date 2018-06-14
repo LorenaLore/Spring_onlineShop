@@ -2,24 +2,26 @@ package ro.msg.learning.shop.model;
 
 
 import com.sun.istack.internal.NotNull;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
+@AllArgsConstructor
 @Entity
 @Table(name="ORDERS")
 public class Order {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "order_id")
     private Integer id;
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "location_id")
-    private Location shippedFrom;
+    @OneToMany(mappedBy = "order")
+    private List<ShippingDetail> shippedFrom;
 
     @NotNull
     @ManyToOne(fetch = FetchType.LAZY)
@@ -30,6 +32,15 @@ public class Order {
     @Embedded
     private Address address;
 
+    private LocalDateTime date;
+
+
     @OneToMany(mappedBy = "id.order", cascade = CascadeType.REMOVE)
     private List<OrderDetail> orderDetailList;
+
+    public Order(Customer customer, Address address, LocalDateTime date) {
+        this.customer = customer;
+        this.address = address;
+        this.date = date;
+    }
 }

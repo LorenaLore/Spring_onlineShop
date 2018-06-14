@@ -1,10 +1,15 @@
 package ro.msg.learning.shop.model;
 
+import lombok.AllArgsConstructor;
 import lombok.Data;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
 
 @Data
+@AllArgsConstructor
 @Entity
 public class OrderDetail {
 

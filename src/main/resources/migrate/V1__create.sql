@@ -24,6 +24,7 @@ CREATE TABLE ORDERS (
 	city VARCHAR(50) NOT NULL,
 	county VARCHAR(50),
 	street VARCHAR(50) NOT NULL,
+	date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
 	PRIMARY KEY(order_id),
  	CONSTRAINT FK_location FOREIGN KEY (location_id) REFERENCES LOCATION (location_id),
  	CONSTRAINT FK_customer FOREIGN KEY (customer_id) REFERENCES CUSTOMER (customer_id)
@@ -71,4 +72,16 @@ CREATE TABLE STOCK (
 	PRIMARY KEY(product_id, location_id),
  	CONSTRAINT FK_product_2 FOREIGN KEY (product_id) REFERENCES PRODUCT (product_id),
  	CONSTRAINT FK_location_2 FOREIGN KEY (location_id) REFERENCES LOCATION (location_id)
+);
+
+CREATE TABLE SHIPPING_DETAIL (
+  shipping_id BIGINT(20) NOT NULL,
+  order_id BIGINT(20) NOT NULL,
+  location_id BIGINT(20) NOT NULL,
+  product_id BIGINT(20) NOT NULL,
+  quantity INT,
+  PRIMARY KEY(shipping_id),
+  CONSTRAINT FK_order_2 FOREIGN KEY (order_id) REFERENCES ORDERS (order_id),
+  CONSTRAINT FK_location_3 FOREIGN KEY (location_id) REFERENCES LOCATION (location_id),
+  CONSTRAINT FK_product_3 FOREIGN KEY (product_id) REFERENCES PRODUCT (product_id)
 );

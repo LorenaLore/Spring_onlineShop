@@ -130,16 +130,16 @@ INSERT INTO LOCATION (name, country, city, county, street) VALUES ('Prohaska, Sa
 INSERT INTO LOCATION (name, country, city, county, street) VALUES ('Abbott, Hickle and Grant', 'Romania', 'Alba-Iulia', 'Alba', 'Decebal, 84');
 INSERT INTO LOCATION (name, country, city, county, street) VALUES ('Swaniawski-Sauer', 'Romania', 'Alba-Iulia', 'Alba', 'Gheorghe Dija, 5');
 
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (7, 16, 'Romania', 'Satu Mare', 'Satu Mare', 'Liviu Rebreanu, 13');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (1, 7, 'Romania', 'Satu Mare', 'Satu Mare', 'Rodnei, 20');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (3, 38, 'Romania', 'Cluj-Napoca', 'Cluj', 'Eroilor, 14');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (8, 43, 'Romania', 'Cluj-Napoca', 'Cluj', 'Avran Iancu, 71');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (2, 49, 'Romania', 'Cluj-Napoca', 'Cluj', 'Dunarii, 55');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (8, 21, 'Romania', 'Bucuresti', 'Bucuresti', 'Progresului, 14');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (6, 11, 'Romania', 'Bucuresti', 'Bucuresti', 'Progresului, 83');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (1, 25, 'Romania', 'Bucuresti', 'Bucuresti', 'Matei Basarab, 2');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (6, 15, 'Romania', 'Bucuresti', 'Bucuresti', 'Turda, 33');
-INSERT INTO ORDERS (location_id, customer_id, country, city, county, street) VALUES (9, 8, 'Romania', 'Satu Mare', 'Satu Mare', 'Liviu Rebreanu, 61');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (7, 16, 'Romania', 'Satu Mare', 'Satu Mare', 'Liviu Rebreanu, 13', '2018-01-19 07:44:40');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (1, 7, 'Romania', 'Satu Mare', 'Satu Mare', 'Rodnei, 20', '2018-01-19 07:44:40');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (3, 38, 'Romania', 'Cluj-Napoca', 'Cluj', 'Eroilor, 14', '2018-01-19 08:00:20');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (8, 43, 'Romania', 'Cluj-Napoca', 'Cluj', 'Avran Iancu, 71', '2018-01-19 10:48:33');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (2, 49, 'Romania', 'Cluj-Napoca', 'Cluj', 'Dunarii, 55', '2018-01-19 01:38:23');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (8, 21, 'Romania', 'Bucuresti', 'Bucuresti', 'Progresului, 14', '2018-01-19 08:00:20');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (6, 11, 'Romania', 'Bucuresti', 'Bucuresti', 'Progresului, 83', '2018-01-19 01:38:23');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (1, 25, 'Romania', 'Bucuresti', 'Bucuresti', 'Matei Basarab, 2', '2018-01-19 10:40:45');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (6, 15, 'Romania', 'Bucuresti', 'Bucuresti', 'Turda, 33', '2018-01-19 19:20:49');
+INSERT INTO ORDERS (location_id, customer_id, country, city, county, street, date) VALUES (9, 8, 'Romania', 'Satu Mare', 'Satu Mare', 'Liviu Rebreanu, 61', '2018-01-19 10:40:45');
 
 INSERT INTO PRODUCT_CATEGORY (name, description) VALUES ('Carbonated Water - Lemon Lime', 'Red Pepper Paste');
 INSERT INTO PRODUCT_CATEGORY (name, description) VALUES ('Salmon - Atlantic, Skin On', 'Vector Energy Bar');

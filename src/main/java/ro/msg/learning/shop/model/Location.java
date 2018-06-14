@@ -4,13 +4,14 @@ import com.sun.istack.internal.NotNull;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @Entity
 public class Location {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "location_id")
     private Integer id;
 
@@ -21,4 +22,7 @@ public class Location {
     @NotNull
     @Embedded
     private Address address;
+
+    @OneToMany(mappedBy = "id.location", cascade = CascadeType.REMOVE)
+    private List<Stock> stockList;
 }
