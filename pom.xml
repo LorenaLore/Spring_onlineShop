@@ -30,6 +30,8 @@
         <spring_boot_jpa.version>2.0.2.RELEASE</spring_boot_jpa.version>
         <jackson_dataformat_csv.version>2.8.8</jackson_dataformat_csv.version>
         <test.version>1.5.3.RELEASE</test.version>
+        <security.version>2.0.0.RELEASE</security.version>
+        <oauth.version>2.3.3.RELEASE</oauth.version>
     </properties>
 
     <dependencies>
@@ -80,6 +82,18 @@
           <groupId>com.fasterxml.jackson.dataformat</groupId>
           <artifactId>jackson-dataformat-csv</artifactId>
           <version>${jackson_dataformat_csv.version}</version>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-security</artifactId>
+            <version>${security.version}</version>
+        </dependency>
+
+        <dependency>
+        	<groupId>org.springframework.security.oauth</groupId>
+        	<artifactId>spring-security-oauth2</artifactId>
+        	<version>${oauth.version}</version>
         </dependency>
     </dependencies>
 

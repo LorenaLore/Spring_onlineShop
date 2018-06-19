@@ -1,6 +1,5 @@
 package ro.msg.learning.shop.converter;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpInputMessage;
 import org.springframework.http.HttpOutputMessage;
 import org.springframework.http.MediaType;
@@ -18,8 +17,7 @@ import java.util.List;
 @Component
 public class CsvMessageConverter<T> extends AbstractGenericHttpMessageConverter<List<T>> {
 
-    @Autowired
-    private CsvMappingUtility csvMappingUtility;
+    private CsvMappingUtility csvMappingUtility = new CsvMappingUtility();
 
     public CsvMessageConverter() {
         super(new MediaType("text", "csv"));
@@ -32,7 +30,8 @@ public class CsvMessageConverter<T> extends AbstractGenericHttpMessageConverter<
 
     @Override
     protected boolean canWrite(MediaType mediaType) {
-        return super.canWrite(mediaType);
+        //TODO:
+        return false;
     }
 
     @Override

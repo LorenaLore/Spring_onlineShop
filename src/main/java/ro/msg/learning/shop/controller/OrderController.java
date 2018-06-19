@@ -11,7 +11,7 @@ import ro.msg.learning.shop.model.Order;
 import ro.msg.learning.shop.service.OrderService;
 
 @RestController
-@RequestMapping(value = "order")
+@RequestMapping(value = "/api/order")
 public class OrderController {
 
     private OrderService orderService;

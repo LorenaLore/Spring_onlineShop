@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping(value = "/stock")
+@RequestMapping(value = "/api/stock")
 public class StockController {
 
     private StockService stockService;

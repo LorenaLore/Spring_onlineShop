@@ -75,7 +75,7 @@ CREATE TABLE STOCK (
 );
 
 CREATE TABLE SHIPPING_DETAIL (
-  shipping_id BIGINT(20) NOT NULL,
+  shipping_id BIGINT(20) NOT NULL AUTO_INCREMENT,
   order_id BIGINT(20) NOT NULL,
   location_id BIGINT(20) NOT NULL,
   product_id BIGINT(20) NOT NULL,
@@ -84,4 +84,25 @@ CREATE TABLE SHIPPING_DETAIL (
   CONSTRAINT FK_order_2 FOREIGN KEY (order_id) REFERENCES ORDERS (order_id),
   CONSTRAINT FK_location_3 FOREIGN KEY (location_id) REFERENCES LOCATION (location_id),
   CONSTRAINT FK_product_3 FOREIGN KEY (product_id) REFERENCES PRODUCT (product_id)
+);
+
+CREATE TABLE USERS (
+  user_id BIGINT(20) NOT NULL AUTO_INCREMENT,
+  username VARCHAR(50) NOT NULL UNIQUE,
+  password VARCHAR(250) NOT NULL,
+  PRIMARY KEY(user_id)
+);
+
+CREATE TABLE AUTHORITY (
+  authority_id  BIGINT(20) NOT NULL AUTO_INCREMENT,
+  name VARCHAR(50),
+  PRIMARY KEY(authority_id)
+);
+
+CREATE TABLE USERS_AUTHORITIES (
+  user_id BIGINT(20) NOT NULL,
+  authority_id BIGINT(20) NOT NULL,
+  PRIMARY KEY(user_id, authority_id),
+  CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES USERS(user_id),
+  CONSTRAINT FK_authority FOREIGN KEY (authority_id) REFERENCES AUTHORITY(authority_id)
 );

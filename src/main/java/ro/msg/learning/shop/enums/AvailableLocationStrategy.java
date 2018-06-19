@@ -1,4 +1,4 @@
-package ro.msg.learning.shop.strategy;
+package ro.msg.learning.shop.enums;
 
 public enum AvailableLocationStrategy {
     SINGLE,

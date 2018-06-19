@@ -1,7 +1,11 @@
 package ro.msg.learning.shop.utils;
 
 import org.springframework.beans.factory.annotation.Value;
-import ro.msg.learning.shop.strategy.*;
+import ro.msg.learning.shop.enums.AvailableLocationStrategy;
+import ro.msg.learning.shop.strategy.GreedyLocationStrategy;
+import ro.msg.learning.shop.strategy.LocationStrategy;
+import ro.msg.learning.shop.strategy.MostAbundantLocationStrategy;
+import ro.msg.learning.shop.strategy.SingleLocationStrategy;
 
 public class CurrentLocationStrategy {
 
