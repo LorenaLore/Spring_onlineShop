@@ -3,12 +3,14 @@ package ro.msg.learning.shop.model;
 import com.sun.istack.internal.NotNull;
 import lombok.Data;
 import org.springframework.security.core.GrantedAuthority;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
+import ro.msg.learning.shop.enums.UserType;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Set;
+import java.util.List;
 
 @Data
 @Entity
@@ -26,19 +28,11 @@ public class Users implements UserDetails {
     @NotNull
     private String password;
 
-    @ManyToMany
-    @JoinTable(
-            name = "users_authorities",
-            joinColumns = @JoinColumn(
-                    name = "user_id", referencedColumnName = "user_id"),
-            inverseJoinColumns = @JoinColumn(
-                    name = "authority_id", referencedColumnName = "authority_id"))
-    private Set<Authority> authorities;
-
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        //TODO: can we connect here our authority?
-        return new ArrayList<>();
+        List<GrantedAuthority> result = new ArrayList<>();
+        result.add(new SimpleGrantedAuthority(UserType.CUSTOMER.name()));
+        return result;
 
     }
 

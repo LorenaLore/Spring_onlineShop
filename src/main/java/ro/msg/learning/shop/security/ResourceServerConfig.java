@@ -12,7 +12,7 @@ import org.springframework.security.oauth2.provider.error.OAuth2AccessDeniedHand
 public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
 
     public void configure(ResourceServerSecurityConfigurer resources) {
-        resources.resourceId("resource_id").stateless(false);
+        resources.resourceId(OAuth2Config.RESOURCE_ID).stateless(false);
     }
 
     @Override

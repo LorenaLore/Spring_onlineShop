@@ -267,7 +267,3 @@ INSERT INTO STOCK (product_id, location_id, quantity) VALUES (3, 12, 6);
 INSERT INTO STOCK (product_id, location_id, quantity) VALUES (25, 27, 43);
 
 INSERT INTO USERS (username, password) VALUES ('username', '$2a$04$ZFIr6kVLCmFXLSepFGca7uIYVvQIm4Inpb4UAdwKgho7We.lPT6J.');
-
-INSERT INTO AUTHORITY (name) VALUES ('CUSTOMER');
-
-INSERT INTO USERS_AUTHORITIES (user_id, authority_id) VALUES (1, 1);

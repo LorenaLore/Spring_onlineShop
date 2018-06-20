@@ -30,8 +30,7 @@ public class CsvMessageConverter<T> extends AbstractGenericHttpMessageConverter<
 
     @Override
     protected boolean canWrite(MediaType mediaType) {
-        //TODO:
-        return false;
+        return mediaType != null && super.canWrite(mediaType);
     }
 
     @Override
