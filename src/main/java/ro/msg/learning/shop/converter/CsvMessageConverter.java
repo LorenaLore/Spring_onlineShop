@@ -7,7 +7,7 @@ import org.springframework.http.converter.AbstractGenericHttpMessageConverter;
 import org.springframework.http.converter.HttpMessageNotReadableException;
 import org.springframework.http.converter.HttpMessageNotWritableException;
 import org.springframework.stereotype.Component;
-import ro.msg.learning.shop.utils.CsvMappingUtility;
+import ro.msg.learning.shop.utils.CsvMappingUtil;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
@@ -17,7 +17,7 @@ import java.util.List;
 @Component
 public class CsvMessageConverter<T> extends AbstractGenericHttpMessageConverter<List<T>> {
 
-    private CsvMappingUtility csvMappingUtility = new CsvMappingUtility();
+    private CsvMappingUtil csvMappingUtility = new CsvMappingUtil();
 
     public CsvMessageConverter() {
         super(new MediaType("text", "csv"));

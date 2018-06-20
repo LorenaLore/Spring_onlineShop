@@ -4,7 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.test.context.junit4.SpringRunner;
 import ro.msg.learning.shop.dto.StockDTO;
-import ro.msg.learning.shop.utils.CsvMappingUtility;
+import ro.msg.learning.shop.utils.CsvMappingUtil;
 
 import java.io.*;
 import java.math.BigDecimal;
@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 @RunWith(SpringRunner.class)
 public class TestCsvMappingUtility {
 
-    CsvMappingUtility<StockDTO> csvMappingUtility = new CsvMappingUtility<>();
+    CsvMappingUtil<StockDTO> csvMappingUtility = new CsvMappingUtil<>();
 
     @Test
     public void testToCsv() throws IOException {
