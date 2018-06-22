@@ -80,6 +80,7 @@ CREATE TABLE SHIPPING_DETAIL (
   location_id BIGINT(20) NOT NULL,
   product_id BIGINT(20) NOT NULL,
   quantity INT,
+  shipping_date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY(shipping_id),
   CONSTRAINT FK_order_2 FOREIGN KEY (order_id) REFERENCES ORDERS (order_id),
   CONSTRAINT FK_location_3 FOREIGN KEY (location_id) REFERENCES LOCATION (location_id),
@@ -105,4 +106,13 @@ CREATE TABLE USERS_AUTHORITIES (
   PRIMARY KEY(user_id, authority_id),
   CONSTRAINT FK_user FOREIGN KEY (user_id) REFERENCES USERS(user_id),
   CONSTRAINT FK_authority FOREIGN KEY (authority_id) REFERENCES AUTHORITY(authority_id)
+);
+
+CREATE TABLE REVENUE (
+  revenue_id BIGINT(20) NOT NULL,
+  location_id BIGINT(20) NOT NULL,
+  date TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  sum DECIMAL(6, 2),
+  PRIMARY KEY(revenue_id),
+  CONSTRAINT FK_location_4 FOREIGN KEY (location_id) REFERENCES LOCATION(location_id)
 );

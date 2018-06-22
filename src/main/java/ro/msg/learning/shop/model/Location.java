@@ -25,4 +25,7 @@ public class Location {
 
     @OneToMany(mappedBy = "id.location", cascade = CascadeType.REMOVE)
     private List<Stock> stockList;
+
+    @OneToMany(mappedBy = "location")
+    private List<Revenue> revenueList;
 }

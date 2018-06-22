@@ -1,12 +1,11 @@
 package ro.msg.learning.shop.model;
 
-import lombok.AllArgsConstructor;
 import lombok.Data;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 
 @Data
-@AllArgsConstructor
 @Entity
 @Table(name = "SHIPPING_DETAIL")
 public class ShippingDetail {
@@ -30,11 +29,13 @@ public class ShippingDetail {
 
     private int quantity;
 
-    public ShippingDetail(Order order, Location location, Product product, int quantity) {
+    private LocalDateTime shipping_date;
+
+    public ShippingDetail(Order order, Location location, Product product, int quantity, LocalDateTime shipping_date) {
         this.order = order;
         this.location = location;
         this.product = product;
         this.quantity = quantity;
+        this.shipping_date = shipping_date;
     }
-
 }
