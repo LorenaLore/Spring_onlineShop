@@ -18,7 +18,7 @@ public class Users implements UserDetails {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "user_id")
+    @Column(name = "user_id", columnDefinition = "BIGINT(20,0)")
     private Integer id;
 
     @NotNull

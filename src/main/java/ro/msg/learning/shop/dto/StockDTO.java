@@ -13,6 +13,6 @@ public class StockDTO {
     private String product_name;
     private String product_description;
     private BigDecimal product_price;
-    private double product_weight;
+    private BigDecimal product_weight;
     private int quantity;
 }

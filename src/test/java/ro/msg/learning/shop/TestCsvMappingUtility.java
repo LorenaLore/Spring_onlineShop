@@ -22,8 +22,8 @@ public class TestCsvMappingUtility {
     public void testToCsv() throws IOException {
         List<StockDTO> stockList = new ArrayList<>();
         stockList.add(
-                new StockDTO(1, "Beer - Upper Canada Lager", "Pineapple - Regular", new BigDecimal(4.00), 0.8, 4));
-        stockList.add(new StockDTO(4, "Veal - Bones", "Clementine", new BigDecimal(6.00), 1, 20));
+                new StockDTO(1, "Beer - Upper Canada Lager", "Pineapple - Regular", new BigDecimal(4.00), new BigDecimal(0.8), 4));
+        stockList.add(new StockDTO(4, "Veal - Bones", "Clementine", new BigDecimal(6.00), new BigDecimal(1), 20));
         OutputStream os = new FileOutputStream("stock.csv");
         csvMappingUtility.toCsv(StockDTO.class, stockList, os);
     }

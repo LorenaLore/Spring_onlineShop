@@ -11,7 +11,7 @@ import java.time.LocalDateTime;
 public class Revenue {
 
     @Id
-    @Column(name = "revenue_id")
+    @Column(name = "revenue_id", columnDefinition = "BIGINT(20,0)")
     private Integer id;
 
     @ManyToOne

@@ -12,7 +12,7 @@ public class Product {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
+    @Column(name = "product_id", columnDefinition = "BIGINT(20,0)")
     private Integer id;
 
     @NotNull
@@ -22,7 +22,7 @@ public class Product {
 
     private BigDecimal price;
 
-    private double weight;
+    private BigDecimal weight;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "category_id")

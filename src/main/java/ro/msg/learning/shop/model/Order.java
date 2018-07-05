@@ -17,7 +17,7 @@ public class Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "order_id")
+    @Column(name = "order_id", columnDefinition = "BIGINT(20,0)")
     private Integer id;
 
     @OneToMany(mappedBy = "order")
