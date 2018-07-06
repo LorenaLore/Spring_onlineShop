@@ -4,6 +4,7 @@ package ro.msg.learning.shop.model;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import ro.msg.learning.shop.converter.LocalDateTimeConverter;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
@@ -32,6 +33,7 @@ public class Order {
     @Embedded
     private Address address;
 
+    @Convert(converter = LocalDateTimeConverter.class)
     private LocalDateTime date;
 
 
