@@ -19,16 +19,19 @@ public class OrderService {
     private final OrderDetailRepository orderDetailRepository;
     private final ProductRepository productRepository;
     private final CustomerRepository customerRepository;
+    private final CurrentLocationStrategy currentLocationStrategy;
 
     private static final String DEFAULT_USERNAME = "ctirrey0";
 
     @Autowired
     public OrderService(OrderRepository orderRepository, OrderDetailRepository orderDetailRepository,
-                        ProductRepository productRepository, CustomerRepository customerRepository) {
+                        ProductRepository productRepository, CustomerRepository customerRepository,
+                        CurrentLocationStrategy currentLocationStrategy) {
         this.orderRepository = orderRepository;
         this.orderDetailRepository = orderDetailRepository;
         this.productRepository = productRepository;
         this.customerRepository = customerRepository;
+        this.currentLocationStrategy = currentLocationStrategy;
     }
 
     /**
@@ -43,18 +46,18 @@ public class OrderService {
             //save first the order, with no shipping details
             Customer customer = customerRepository.findByUsername(DEFAULT_USERNAME);
             Order order = new Order(customer, initialOrderDTO.getAddress(), initialOrderDTO.getDate());
-            order = orderRepository.save(order);
+            orderRepository.save(order);
             for (ProductDTO productDTO : initialOrderDTO.getProducts()) {
                 Product product = productRepository.findById(productDTO.getId()).get();
                 orderDetailRepository.save(
                         new OrderDetail(new OrderDetailId(order, product), productDTO.getQuantity()));
             }
             //ship products for current order
-            CurrentLocationStrategy.getCurrentLocationStrategy().fetchShippingDetailsForOrder(order);
+            order = orderRepository.findById(order.getId()).get();
+            currentLocationStrategy.getCurrentLocationStrategy().fetchShippingDetailsForOrder(order);
             return orderRepository.findById(order.getId()).get();
         } catch (Exception e) {
             throw new OrderHandlingException(e.getCause() + e.getMessage());
         }
     }
-
 }

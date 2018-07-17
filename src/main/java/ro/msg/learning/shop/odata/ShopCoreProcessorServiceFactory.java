@@ -9,19 +9,28 @@ import org.apache.olingo.odata2.api.ep.EntityProvider;
 import org.apache.olingo.odata2.api.exception.ODataApplicationException;
 import org.apache.olingo.odata2.api.exception.ODataException;
 import org.apache.olingo.odata2.api.processor.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Component;
+import ro.msg.learning.shop.service.OrderService;
 
 @Component
 @Scope("request")
 public class ShopCoreProcessorServiceFactory extends ODataServiceFactory {
+
+    private OrderService orderService;
+
+    @Autowired
+    public ShopCoreProcessorServiceFactory(OrderService orderService) {
+        this.orderService = orderService;
+    }
 
     @Override
     public ODataService createService(ODataContext oDataContext) throws ODataException {
 
       //  EdmProvider edmProvider = new ShopCoreProcessorEdmProvider();
         EdmProvider edmProvider = new ShopCreateDtoEdmProvider();
-        ODataSingleProcessor singleProcessor = new ShopCoreProcessor();
+        ODataSingleProcessor singleProcessor = new ShopCoreProcessor(orderService);
         return createODataSingleProcessorService(edmProvider, singleProcessor);
     }
 

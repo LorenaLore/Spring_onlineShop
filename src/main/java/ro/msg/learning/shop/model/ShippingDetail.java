@@ -1,12 +1,14 @@
 package ro.msg.learning.shop.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "SHIPPING_DETAIL")
 public class ShippingDetail {
 

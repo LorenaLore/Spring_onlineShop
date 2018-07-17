@@ -23,7 +23,7 @@ public class Location {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "id.location", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "id.location", cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
     private List<Stock> stockList;
 
     @OneToMany(mappedBy = "location")

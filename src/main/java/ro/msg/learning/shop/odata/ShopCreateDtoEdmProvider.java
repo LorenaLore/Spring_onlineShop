@@ -5,6 +5,7 @@ import org.apache.olingo.odata2.api.edm.provider.*;
 import org.apache.olingo.odata2.api.exception.ODataException;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -32,6 +33,8 @@ public class ShopCreateDtoEdmProvider extends EdmProvider {
     private static final String ROLE_ORDER_PRODUCT_2 = "ProductDTO_InitialOrderDTO";
 
     private static final String ENTITY_CONTAINER = "ODataCreateOrderEntityContainer";
+
+    private static final String ASSOCIATION_SET = "InitialOrderSTOs_ProductDTOs";
 
 
     public EntityContainerInfo getEntityContainerInfo(String name) throws ODataException {
@@ -86,7 +89,7 @@ public class ShopCreateDtoEdmProvider extends EdmProvider {
         List<Property> properties = new ArrayList<>();
         properties.add(new SimpleProperty().setName("Id").setType(EdmSimpleTypeKind.Int32).setFacets(
                 new Facets().setNullable(false)));
-        properties.add(new SimpleProperty().setName("Quantity").setType(EdmSimpleTypeKind.Int16));
+        properties.add(new SimpleProperty().setName("Quantity").setType(EdmSimpleTypeKind.Int32));
 
         //Key
         List<PropertyRef> keyProperties = new ArrayList<>();
@@ -140,6 +143,14 @@ public class ShopCreateDtoEdmProvider extends EdmProvider {
 
     public AssociationSet getAssociationSet(String entityContainer, FullQualifiedName association,
                                             String sourceEntitySetName, String sourceEntitySetRole) throws ODataException {
+       if(ENTITY_CONTAINER.equals(entityContainer)){
+           if (ASSOCIATION_INITIAL_ORDER_PRODUCT.equals(association)) {
+               return new AssociationSet().setName(ASSOCIATION_SET).setAssociation(ASSOCIATION_INITIAL_ORDER_PRODUCT)
+                       .setEnd1(new AssociationSetEnd().setRole(ROLE_ORDER_PRODUCT_1).setEntitySet(ENTITY_SET_NAME_INITIAL_ORDERS))
+                       .setEnd2(new AssociationSetEnd().setRole(ROLE_ORDER_PRODUCT_2).setEntitySet(ENTITY_SET_NAME_PRODUCTS));
+           }
+       }
+
         return null;
     }
 
@@ -184,6 +195,10 @@ public class ShopCreateDtoEdmProvider extends EdmProvider {
     }
 
     public List<AliasInfo> getAliasInfos() throws ODataException {
-        return null;
+
+        AliasInfo aliasInfo = new AliasInfo();
+        aliasInfo.setAlias("someAlisForTest");
+        aliasInfo.setNamespace(NAMESPACE);
+        return Arrays.asList(aliasInfo);
     }
 }

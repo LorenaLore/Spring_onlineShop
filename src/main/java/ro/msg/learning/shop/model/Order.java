@@ -4,6 +4,7 @@ package ro.msg.learning.shop.model;
 import com.sun.istack.internal.NotNull;
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import ro.msg.learning.shop.converter.LocalDateTimeConverter;
 
 import javax.persistence.*;
@@ -12,6 +13,7 @@ import java.util.List;
 
 @Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Entity
 @Table(name="ORDERS")
 public class Order {

@@ -8,6 +8,7 @@ import ro.msg.learning.shop.model.Order;
 import ro.msg.learning.shop.model.OrderDetail;
 import ro.msg.learning.shop.model.Stock;
 import ro.msg.learning.shop.repository.LocationRepository;
+import ro.msg.learning.shop.repository.OrderDetailRepository;
 
 import java.util.List;
 
@@ -16,16 +17,18 @@ import java.util.List;
 public class LocationService {
 
     private LocationRepository locationRepository;
+    private OrderDetailRepository orderDetailRepository;
 
     @Autowired
-    public LocationService(LocationRepository locationRepository) {
+    public LocationService(LocationRepository locationRepository, OrderDetailRepository orderDetailRepository) {
         this.locationRepository = locationRepository;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
     public Location getSingleLocationForOrder(Order order) {
         for (Location location : locationRepository.findAll()) {
             boolean locationOk = true;
-            for (OrderDetail od : order.getOrderDetailList()) {
+            for (OrderDetail od : orderDetailRepository.findByOrderId(order.getId())) {
                 if (!productFoundInStock(od, location.getStockList())) {
                     locationOk = false;
                     break;
@@ -41,7 +44,7 @@ public class LocationService {
 
     private boolean productFoundInStock(OrderDetail od, List<Stock> stockList) {
         for (Stock stock : stockList) {
-            if (od.getId().getProduct() == stock.getId().getProduct()) {
+            if (od.getId().getProduct().getId().equals(stock.getId().getProduct().getId())) {
                 return od.getQuantity() <= stock.getQuantity();
             }
         }
