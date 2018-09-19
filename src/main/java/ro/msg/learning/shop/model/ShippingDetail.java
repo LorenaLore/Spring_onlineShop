@@ -1,18 +1,20 @@
 package ro.msg.learning.shop.model;
 
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Data
 @Entity
+@NoArgsConstructor
 @Table(name = "SHIPPING_DETAIL")
 public class ShippingDetail {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "shipping_id")
+    @Column(name = "shipping_id", columnDefinition = "BIGINT(20,0)")
     private Integer id;
 
     @ManyToOne

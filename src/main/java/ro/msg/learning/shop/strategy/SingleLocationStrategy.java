@@ -8,6 +8,7 @@ import ro.msg.learning.shop.model.Location;
 import ro.msg.learning.shop.model.Order;
 import ro.msg.learning.shop.model.OrderDetail;
 import ro.msg.learning.shop.model.ShippingDetail;
+import ro.msg.learning.shop.repository.OrderDetailRepository;
 import ro.msg.learning.shop.service.LocationService;
 import ro.msg.learning.shop.service.ShippingDetailService;
 
@@ -18,13 +19,16 @@ import java.util.List;
 @NoArgsConstructor
 public class SingleLocationStrategy implements LocationStrategy {
 
-    LocationService locationService;
-    ShippingDetailService shippingDetailService;
+    private LocationService locationService;
+    private ShippingDetailService shippingDetailService;
+    private OrderDetailRepository orderDetailRepository;
 
     @Autowired
-    public SingleLocationStrategy(LocationService locationService, ShippingDetailService shippingDetailService) {
+    public SingleLocationStrategy(LocationService locationService, ShippingDetailService shippingDetailService,
+                                  OrderDetailRepository orderDetailRepository) {
         this.locationService = locationService;
         this.shippingDetailService = shippingDetailService;
+        this.orderDetailRepository = orderDetailRepository;
     }
 
     @Override
@@ -34,7 +38,7 @@ public class SingleLocationStrategy implements LocationStrategy {
             throw new LocationException("could not find location for delivering order: " + order.getId());
         }
         List<ShippingDetail> shippingDetails = new ArrayList<>();
-        for (OrderDetail orderDetail : order.getOrderDetailList()) {
+        for (OrderDetail orderDetail : orderDetailRepository.findByOrderId(order.getId())) {
             shippingDetails.add(
                     shippingDetailService.createShippingDetail(order, orderDetail.getId().getProduct(), location,
                             orderDetail.getQuantity()));

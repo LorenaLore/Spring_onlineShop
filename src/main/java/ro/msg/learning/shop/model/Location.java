@@ -12,7 +12,7 @@ public class Location {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "location_id")
+    @Column(name = "location_id", columnDefinition = "BIGINT(20,0)")
     private Integer id;
 
     @NotNull
@@ -23,7 +23,7 @@ public class Location {
     @Embedded
     private Address address;
 
-    @OneToMany(mappedBy = "id.location", cascade = CascadeType.REMOVE)
+    @OneToMany(mappedBy = "id.location", cascade = CascadeType.REMOVE, fetch=FetchType.EAGER)
     private List<Stock> stockList;
 
     @OneToMany(mappedBy = "location")

@@ -6,7 +6,7 @@
     <groupId>ro.msg.learning</groupId>
     <artifactId>shop</artifactId>
     <version>0.0.1-SNAPSHOT</version>
-    <packaging>jar</packaging>
+    <packaging>war</packaging>
 
     <name>shop</name>
     <description>Demo project for Spring Boot</description>
@@ -32,6 +32,7 @@
         <test.version>1.5.3.RELEASE</test.version>
         <security.version>2.0.0.RELEASE</security.version>
         <oauth.version>2.3.3.RELEASE</oauth.version>
+        <olingo.version>2.0.10</olingo.version>
     </properties>
 
     <dependencies>
@@ -79,9 +80,9 @@
         </dependency>
 
         <dependency>
-          <groupId>com.fasterxml.jackson.dataformat</groupId>
-          <artifactId>jackson-dataformat-csv</artifactId>
-          <version>${jackson_dataformat_csv.version}</version>
+            <groupId>com.fasterxml.jackson.dataformat</groupId>
+            <artifactId>jackson-dataformat-csv</artifactId>
+            <version>${jackson_dataformat_csv.version}</version>
         </dependency>
 
         <dependency>
@@ -91,10 +92,58 @@
         </dependency>
 
         <dependency>
-        	<groupId>org.springframework.security.oauth</groupId>
-        	<artifactId>spring-security-oauth2</artifactId>
-        	<version>${oauth.version}</version>
+            <groupId>org.springframework.security.oauth</groupId>
+            <artifactId>spring-security-oauth2</artifactId>
+            <version>${oauth.version}</version>
         </dependency>
+
+        <!-- Apache olingo library dependencies for odata2 -->
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-api</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-api-annotation</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-core</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-spring</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+
+        <!-- Apache olingo jpa processor dependencies -->
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-jpa-processor-api</artifactId>
+            <version>${olingo.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-jpa-processor-core</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+
+        <!-- Apache olingo annotation processor dependencies -->
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-annotation-processor-api</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.olingo</groupId>
+            <artifactId>olingo-odata2-annotation-processor-core</artifactId>
+            <version>${olingo.version}</version>
+        </dependency>
+
     </dependencies>
 
     <build>
