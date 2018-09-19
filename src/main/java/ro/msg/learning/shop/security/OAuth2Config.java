@@ -13,10 +13,9 @@ import org.springframework.security.oauth2.config.annotation.web.configurers.Aut
 @EnableAuthorizationServer
 public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
 
-    @Autowired
-    private AuthenticationManager authenticationManager;
+    private final AuthenticationManager authenticationManager;
 
-    public static final String RESOURCE_ID = "resource_id";
+    static final String RESOURCE_ID = "resource_id";
     @Value("${oauth.token.timeout}")
     private int expiration;
     @Value("${oauth.client.name}")
@@ -28,14 +27,18 @@ public class OAuth2Config extends AuthorizationServerConfigurerAdapter {
     @Value("${oauth.grant.types}")
     private String[] grant_types;
 
+    @Autowired
+    public OAuth2Config(AuthenticationManager authenticationManager){
+        this.authenticationManager = authenticationManager;
+    }
+
     /**
      * this method hooks up the users into the auth server
      *
      * @param configurer AuthorizationServerEndpointsConfigurer
-     * @throws Exception
      */
     @Override
-    public void configure(AuthorizationServerEndpointsConfigurer configurer) throws Exception {
+    public void configure(AuthorizationServerEndpointsConfigurer configurer) {
         configurer.authenticationManager(authenticationManager);
     }
 

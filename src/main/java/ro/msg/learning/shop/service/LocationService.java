@@ -1,6 +1,6 @@
 package ro.msg.learning.shop.service;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ro.msg.learning.shop.exception.LocationException;
 import ro.msg.learning.shop.model.Location;
@@ -14,16 +14,11 @@ import java.util.List;
 
 
 @Service
+@RequiredArgsConstructor
 public class LocationService {
 
-    private LocationRepository locationRepository;
-    private OrderDetailRepository orderDetailRepository;
-
-    @Autowired
-    public LocationService(LocationRepository locationRepository, OrderDetailRepository orderDetailRepository) {
-        this.locationRepository = locationRepository;
-        this.orderDetailRepository = orderDetailRepository;
-    }
+    private final LocationRepository locationRepository;
+    private final OrderDetailRepository orderDetailRepository;
 
     public Location getSingleLocationForOrder(Order order) {
         for (Location location : locationRepository.findAll()) {
@@ -52,11 +47,8 @@ public class LocationService {
     }
 
     public Location getById(Integer locationId) throws LocationException {
-        try {
-            return locationRepository.findById(locationId).get();
-        } catch (NullPointerException npe) {
-            throw new LocationException("Location with given id could no be found. Id: " + locationId);
-        }
+        return locationRepository.findById(locationId).orElseThrow(() ->
+                new LocationException("Location with given id could no be found. Id: " + locationId));
     }
 
 }

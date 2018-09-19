@@ -8,7 +8,7 @@ import org.springframework.context.annotation.Configuration;
 public class ServletConfiguration {
 
     @Bean
-    public ServletRegistrationBean oDataServlet(WireServlet servlet) {
+    public ServletRegistrationBean oDataServlet(ShopODataServlet servlet) {
         ServletRegistrationBean registrationBean = new ServletRegistrationBean(servlet, "/odata/*");
         registrationBean.setLoadOnStartup(1);
         return registrationBean;

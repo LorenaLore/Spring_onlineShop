@@ -31,13 +31,13 @@ public class ShippingDetail {
 
     private int quantity;
 
-    private LocalDateTime shipping_date;
+    private LocalDateTime shippingDate;
 
-    public ShippingDetail(Order order, Location location, Product product, int quantity, LocalDateTime shipping_date) {
+    public ShippingDetail(Order order, Location location, Product product, int quantity, LocalDateTime shippingDate) {
         this.order = order;
         this.location = location;
         this.product = product;
         this.quantity = quantity;
-        this.shipping_date = shipping_date;
+        this.shippingDate = shippingDate;
     }
 }

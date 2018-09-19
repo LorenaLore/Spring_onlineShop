@@ -9,10 +9,10 @@ import java.math.BigDecimal;
 @AllArgsConstructor
 public class StockDTO {
 
-    private Integer product_id;
-    private String product_name;
-    private String product_description;
-    private BigDecimal product_price;
-    private BigDecimal product_weight;
+    private Integer productId;
+    private String productName;
+    private String productDescription;
+    private BigDecimal productPrice;
+    private BigDecimal productWeight;
     private int quantity;
 }

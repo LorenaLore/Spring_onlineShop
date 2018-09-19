@@ -1,6 +1,6 @@
 package ro.msg.learning.shop.controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -11,15 +11,11 @@ import ro.msg.learning.shop.model.Order;
 import ro.msg.learning.shop.service.OrderService;
 
 @RestController
+@RequiredArgsConstructor
 @RequestMapping(value = "/api/order")
 public class OrderController {
 
-    private OrderService orderService;
-
-    @Autowired
-    public OrderController(OrderService orderService) {
-        this.orderService = orderService;
-    }
+    private final OrderService orderService;
 
     @PostMapping
     public Order createOrder(@RequestBody InitialOrderDTO initialOrderDTO) throws OrderHandlingException {

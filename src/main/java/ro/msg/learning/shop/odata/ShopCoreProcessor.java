@@ -1,5 +1,6 @@
 package ro.msg.learning.shop.odata;
 
+import lombok.RequiredArgsConstructor;
 import org.apache.olingo.odata2.api.ep.EntityProvider;
 import org.apache.olingo.odata2.api.ep.EntityProviderReadProperties;
 import org.apache.olingo.odata2.api.ep.EntityProviderWriteProperties;
@@ -10,7 +11,6 @@ import org.apache.olingo.odata2.api.processor.ODataSingleProcessor;
 import org.apache.olingo.odata2.api.uri.info.GetEntityUriInfo;
 import org.apache.olingo.odata2.api.uri.info.PostUriInfo;
 import org.apache.olingo.odata2.core.ep.feed.ODataDeltaFeedImpl;
-import org.springframework.beans.factory.annotation.Autowired;
 import ro.msg.learning.shop.dto.InitialOrderDTO;
 import ro.msg.learning.shop.dto.ProductDTO;
 import ro.msg.learning.shop.exception.OrderHandlingException;
@@ -22,14 +22,10 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 import java.util.*;
 
+@RequiredArgsConstructor
 public class ShopCoreProcessor extends ODataSingleProcessor {
 
-    private OrderService orderService;
-
-    @Autowired
-    public ShopCoreProcessor(OrderService orderService) {
-        this.orderService = orderService;
-    }
+    private final OrderService orderService;
 
     @Override
     public ODataResponse createEntity(PostUriInfo uriInfo, InputStream content, String requestContentType,
